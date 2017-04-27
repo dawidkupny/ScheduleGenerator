@@ -1,0 +1,43 @@
+/*html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 60px;
+	padding-top: 50px;
+}
+/* ?? ^*/
+#bg {
+	background-image: url("img/back1tiny.jpg");
+	background-size: cover;
+	background-position: center center; 
+	position: relative;
+	top: 0;
+	bottom: 0;
+	height: 100vh;
+	z-index: -10;
+}
+#bg-overlay {
+ 	position: absolute;
+ 	background-color: rgba(255,255,255,0.3);
+ 	top: 0;
+ 	bottom: 0;
+ 	height: 100%;
+ 	width: 100%;
+ 	z-index: -5;
+ }
+ 
+.navbar {
+	padding-top: 0.5%;
+}
+ 
+.navbar-brand {
+ 	padding: 0px;
+ 	letter-spacing: 1px;
+ 	font-weight: bold;
+} 
+
+.pane {
+	padding: 10px;
+}
