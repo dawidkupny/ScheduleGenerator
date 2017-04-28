@@ -1,13 +1,7 @@
-/*html {
-	position: relative;
-	min-height: 100%;
+body {
+	
 }
 
-body {
-	margin-bottom: 60px;
-	padding-top: 50px;
-}
-/* ?? ^*/
 #bg {
 	background-image: url("img/back1tiny.jpg");
 	background-size: cover;
@@ -16,17 +10,16 @@ body {
 	top: 0;
 	bottom: 0;
 	height: 100vh;
-	z-index: -10;
 }
+
 #bg-overlay {
- 	position: absolute;
+    position: absolute;
  	background-color: rgba(255,255,255,0.3);
- 	top: 0;
- 	bottom: 0;
- 	height: 100%;
- 	width: 100%;
- 	z-index: -5;
- }
+  	top: 0; 
+  	bottom: 0; 
+  	height: 100%; 
+  	width: 100%;
+}
  
 .navbar {
 	padding-top: 0.5%;
@@ -38,6 +31,28 @@ body {
  	font-weight: bold;
 } 
 
-.pane {
-	padding: 10px;
+
+.main {
+	background-color: rgba(255,255,255,0.4);
+	margin-top: 8%;
+	position: center;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+
+p {
+	font-size: 18px;
+}
+
+#inp2 {
+	margin-bottom: 10px;
+}
+
+#inp1 {
+	width: 95%;
+	border-radius: 3px 3px 3px 3px;
 }
