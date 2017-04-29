@@ -8,12 +8,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin-ext" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 </head>
 
 <body>
 	
-	<div id="bg">
-		<div id="bg-overlay">
+	<div class="bg">
+		<div class="bg-overlay">
 			
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container">
@@ -72,10 +76,6 @@
 		</div>
 	</div>
   	
-
-	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,9 @@
 body {
-	
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
 }
 
-#bg {
+.bg {
 	background-image: url("img/back1tiny.jpg");
 	background-size: cover;
 	background-position: center center; 
@@ -10,16 +11,22 @@ body {
 	top: 0;
 	bottom: 0;
 	height: 100vh;
+	overflow-x: hidden;
 }
 
-#bg-overlay {
+.bg-overlay {
     position: absolute;
  	background-color: rgba(255,255,255,0.3);
   	top: 0; 
   	bottom: 0; 
   	height: 100%; 
   	width: 100%;
+  	overflow-x: hidden;
 }
+
+/* .overfl {
+	overflow-x: hidden;     ----Raczej sie nie przyda
+} */
  
 .navbar {
 	padding-top: 0.5%;
@@ -28,7 +35,6 @@ body {
 .navbar-brand {
  	padding: 0px;
  	letter-spacing: 1px;
- 	font-weight: bold;
 } 
 
 
@@ -56,3 +62,9 @@ p {
 	width: 95%;
 	border-radius: 3px 3px 3px 3px;
 }
+
+.content {
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
