@@ -56,11 +56,11 @@
 						</p>
 					</section>
 					<section class="col col-lg-4 col-lg-offset-2 col-md-5 col-sm-6 ">
-						<form class="form-signin" method="post" action="#">
+						<form class="form-signin" method="post" action="registerCompany">
 						<h2 class="form-signin-heading">Zarejestruj swoją firmę!</h2>
 							<input id="inp2" name="inputCompany" type="text" class="form-control" placeholder="Nazwa firmy" required/>
 							<input id="inp2" name="inputNip" type="text" class="form-control" placeholder="NIP" required />
-							<input id="inp2" name="inputEmail" type="text" class="form-control" placeholder="Email" required />
+							<input id="inp2" name="inputEmail" type="email" class="form-control" placeholder="Email" required />
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
 							<hr/>

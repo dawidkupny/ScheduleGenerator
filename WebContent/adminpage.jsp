@@ -58,11 +58,12 @@
 					<div class="col col-lg-1 col-md-1">
 					</div>
 			    	<div class="col col-sm-6">
-				    	<form class="form-signin" method="post" action="#">
+				    	<form class="form-signin" method="post" action="registerUser">
 						<h2 class="form-signin-heading">Zarejestruj pracownika</h2><br>
-							<input id="inp2" name="inputEmail" type="text" class="form-control" placeholder="Email" required />
+							<input id="inp2" name="inputEmail" type="email" class="form-control" placeholder="Email" required />
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
+							<input id="inp2" name="inputNip" type="text" class="form-control" placeholder="NIP" required />
 							<hr/>
 							<p>Klikając przycisk Zarejestruj, akceptujesz nasz <a href="#">Regulamin</a>.</p>
 							<hr/>

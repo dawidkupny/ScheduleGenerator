@@ -7,6 +7,7 @@ public class User {
 	private String password;
 	private boolean is_hired;
 	private String companyNip;
+	private String role;
 	
 	public User(){ }
 	
@@ -16,6 +17,7 @@ public class User {
 		this.email = user.email;
 		this.password = user.password;
 		this.companyNip = user.companyNip;
+		this.role = user.role;
 	}
 
 	public long getId() {
@@ -65,12 +67,20 @@ public class User {
 	public void setCompanyNip(String companyNip) {
 		this.companyNip = companyNip;
 	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "User [id="+id+", name="+username+", email="+email+", password="+password+", is_hired="+is_hired+", companyNip="+companyNip+"]";
+		return "User [id="+id+", name="+username+", email="+email+", password="+password+", is_hired="+is_hired+", companyNip="+companyNip+", role="+role+"]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,6 +90,7 @@ public class User {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + (is_hired ? 1231 : 1237);
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -112,6 +123,11 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (role == null) {
+			if (other.role != null)
+				return false;
+		} else if (!role.equals(other.role))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -119,6 +135,5 @@ public class User {
 			return false;
 		return true;
 	}
-	
 	
 }
