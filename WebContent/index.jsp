@@ -28,10 +28,10 @@
        				</button>
 			
 					<div class="collapse navbar-collapse navHeaderCollapse">
-	          			<form class="form-signin" method="post" action="register">
+	          			<form class="form-signin" method="post" action="j_security_check">
 	         	 			<ul class="nav navbar-nav navbar-right">
-	           					<li><input id="inp1" name="inputUsername" type="text" name="inputUsername" class="form-control" placeholder="Nazwa użytkownika" required autofocus /></li>
-	            				<li><input id="inp1" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required /></li>
+	           					<li><input id="inp1" name="j_username" type="text" class="form-control" placeholder="Nazwa użytkownika" required autofocus /></li>
+	            				<li><input id="inp1" name="j_password" type="password" class="form-control" placeholder="Hasło" required /></li>
 	            				<li><input id="inp1" type="submit" class="btn btn-info" value="Zaloguj się"></li>
 	          				</ul>
 	          			</form>

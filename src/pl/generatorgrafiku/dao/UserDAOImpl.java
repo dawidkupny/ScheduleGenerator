@@ -1,8 +1,12 @@
 package pl.generatorgrafiku.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -15,6 +19,10 @@ public class UserDAOImpl implements UserDAO {
 
 	private static final String CREATE_USER =
 			"INSERT INTO user(username, email, is_hired, password, company_company_NIP) VALUES (:username, :email, :is_hired, :password, :companyNip);"; 		
+	private static final String READ_USER = 
+			"SELECT user_id, username, email, is_hired, password, company_company_NIP FROM user WHERE user_id = :id;";
+	private static final String READ_USER_BY_USERNAME = 
+			"SELECT user_id, username, email, is_hired, password, company_company_NIP FROM user WHERE username = :username;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -43,8 +51,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User read(Long primaryKey) {
-		// TODO Auto-generated method stub
-		return null;
+		User resultUser = null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("id", primaryKey);
+		resultUser = template.queryForObject(READ_USER, paramSource, new UserRowMapper());
+		return resultUser;
 	}
 
 	@Override
@@ -67,8 +77,31 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		User resultUser = null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("username", username);
+		resultUser = template.queryForObject(READ_USER_BY_USERNAME, paramSource, new UserRowMapper());
+		return resultUser;
+	}
+	
+	private class UserRowMapper implements RowMapper<User> {
+
+		@Override
+		public User mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+			User user = new User();
+			user.setId(resultSet.getLong("user_id"));
+			user.setUsername(resultSet.getString("username"));
+			user.setEmail(resultSet.getString("email"));
+			user.setPassword(resultSet.getString("password"));
+			user.setCompanyNip(resultSet.getString("company_company_NIP"));
+			return user;
+		}
+		
 	}
 
 }
+
+/*
+ Do utworzenia wynikowego obiektu potrzebna jest nam pomocnicza klasa wewnêtrzna UserRowMapper implementuj¹ca interfejs RowMapper. 
+ Posiada on tylko jedn¹ metodê mapRow(), w której tworzymy obiekt User i ustawiamy jego kolejne pola poprzez settery. Wartoœci pobieramy 
+ z obiektu ResultSet
+ */

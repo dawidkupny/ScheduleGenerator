@@ -34,7 +34,7 @@
             					<li><a href="#geneSchedule">Generuj grafik</a></li>
             					<li><a href="#checkSchedule">Podejrzyj grafik</a></li>
             					<li><a href="#empList">Lista pracowników</a></li>
-            					<li><a href="#">Wyloguj się</a></li>
+            					<li><a href="logout">Wyloguj się</a></li>
 	          				</ul>
 	        		</div>
         

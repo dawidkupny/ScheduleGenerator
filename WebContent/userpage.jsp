@@ -31,7 +31,7 @@
 	         	 			<ul class="nav navbar-nav navbar-right">
 	           					<li><a href="#schedule">Podejrzyj grafik</a></li>
             					<li><a href="#apply">Złóż wniosek</a></li>
-            					<li><a href="#">Wyloguj się</a></li>
+            					<li><a href="logout">Wyloguj się</a></li>
 	          				</ul>
 	        		</div>
         
