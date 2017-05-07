@@ -1,8 +1,10 @@
 package pl.generatorgrafiku.dao;
 
+import java.util.List;
+
 import pl.generatorgrafiku.model.ApplicationDayOff;
 
 public interface ApplicationDayOffDAO extends GenericDAO<ApplicationDayOff, Long> {
 	
-	public ApplicationDayOff getApplicationDayOffByUserIdCompanyNip(long userId, String companyNip);
+	public List<ApplicationDayOff> getAllApplicationDayOffCompanyNip(String companyNip);
 }

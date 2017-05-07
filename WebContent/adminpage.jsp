@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +65,6 @@
 							<input id="inp2" name="inputEmail" type="email" class="form-control" placeholder="Email" required />
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
-							<input id="inp2" name="inputNip" type="text" class="form-control" placeholder="NIP" required />
 							<hr/>
 							<p>Klikając przycisk Zarejestruj, akceptujesz nasz <a href="#">Regulamin</a>.</p>
 							<hr/>
@@ -81,23 +82,87 @@
 	    <div class="col col-lg-1 col-md-1">
 		</div>
 	    	<div class="col col-sm-8">
-		      <h2>About Company Page</h2><br>
-		      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	    		<form class="form-signin" method="post" action="readAppli">
+			    	<h2 class="form-signin-heading">Wyświetl wnioski pracowników z danego miesiąca</h2><br>
+		      		<input name="inputMonth" type="month" class="form-control" />
+		      		<input class="btn btn-lg btn-primary" type="submit" value="Pokaż" />
+	      		</form>
 			</div>
 		</div>
+		<br/>
 		<div class="row">
 			<div class="col col-lg-1 col-md-1">
 			</div>
 	    	<div class="col col-sm-8">
-		      <h2>Our Values</h2><br>
-		      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	    		<form class="form-signin" method="get" action="readAllAppli">
+			    	<h2 class="form-signin-heading">Wyświetl wszystkie wnioski pracowników</h2><br>
+		      		<input class="btn btn-lg btn-primary" type="submit" value="Pokaż" />
+	      		</form>
 	    	</div>
 	  	</div>
 	</div>	
 	<br/>
+	
+	<c:if test="${not empty requestScope.applicationsDayOff}">
+		<div class="container">
+			<div class="col col-lg-1 col-md-1">
+			</div>
+			<p>Wnioski o wolny dzień:</p>
+			<br/>
+		</div>
+		<ul>
+		<c:forEach var="applicationDay" items="${requestScope.applicationsDayOff}">
+			<div class="container">
+				<div class="row">
+	    			<div class="col col-lg-1 col-md-1">
+					</div>
+	    			<div class="col col-sm-8">
+	    				<li><h4>Dodane przez: <c:out value="${applicationDay.user.username}"/>, 
+	    				Dzień: <fmt:formatDate value="${applicationDay.day }" pattern="dd/MM/YYYY"/></h4>
+	    				<p><c:out value="${applicationDay.reason }"></c:out></p></li>
+		     		</div>
+				</div>
+			</div>
+			<br/>	
+		</c:forEach>
+		</ul>
+	</c:if>
+	<c:if test="${not empty requestScope.applicationsLeave}">
+		<br/>
+		<div class="container">
+			<div class="col col-lg-1 col-md-1">
+			</div>
+			<p>Wnioski o urlop:</p>
+			<br/>
+		</div>
+		<ul>
+		<c:forEach var="applicationLeave" items="${requestScope.applicationsLeave}">
+			<div class="container">
+				<div class="row">
+	    			<div class="col col-lg-1 col-md-1">
+					</div>
+	    			<div class="col col-sm-8">
+	    				<li><h4>Dodane przez: <c:out value="${applicationLeave.user.username}"/><br/> </h4>
+	    				<p>Od: <fmt:formatDate value="${applicationLeave.firstDay }" pattern="dd/MM/YYYY"/><br/>
+	    				do: <fmt:formatDate value="${applicationLeave.lastDay }" pattern="dd/MM/YYYY"/></p></li>
+		     		</div>
+				</div>
+			</div>
+			<br/>	
+		</c:forEach>
+		</ul>
+	</c:if>
+	<c:if test="${not empty requestScope.noneApplicationsDayOff}">
+		<div class="container">
+				<div class="row">
+	    			<div class="col col-lg-1 col-md-1">
+					</div>
+	    			<div class="col col-sm-8">
+	    				<p>Brak wniosków</p>
+		     		</div>
+				</div>
+			</div>	
+	</c:if>
 		
 	<div id="geneSchedule" class="container content">
 		<div class="row">

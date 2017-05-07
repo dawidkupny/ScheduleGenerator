@@ -70,20 +70,28 @@
 	    <div class="col col-lg-1 col-md-1">
 		</div>
 	    	<div class="col col-sm-8">
-		      <h2>About Company Page</h2><br>
-		      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
+	    		<form class="form-signin" method="post" action="appliDay">
+		      		<h2 class="form-signin-heading">Złóż wniosek o wolny dzień</h2><br>
+		      		<input name="inputDay" type="date" class="form-control" />
+		      		<textarea name="inputReason" rows="5" name="inputUsername" class="form-control" placeholder="Uzasadnienie" required></textarea>
+		      		<input class="btn btn-lg btn-primary" type="submit" value="Wyślij" />
+		      	</form>
+		   </div>
 		</div>
+		<br/>
 		<div class="row">
 			<div class="col col-lg-1 col-md-1">
 			</div>
 	    	<div class="col col-sm-8">
-		      <h2>Our Values</h2><br>
-		      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	    	</div>
+		    	<form class="form-signin" method="post" action="appliLeave">
+		      		<h2 class="form-signin-heading">Złóż wniosek o urlop</h2><br>
+		      		<h4>Podaj dzień rozpoczęcia urlopu</h4>
+		      		<input name="inputFirstDay" type="date" class="form-control" />
+		      		<h4>Podaj dzień zakończenia urlopu</h4>
+		      		<input name="inputLastDay" type="date" class="form-control" />
+		      		<input class="btn btn-lg btn-primary" type="submit" value="Wyślij" />
+		      	</form>  
+		    </div>
 	  	</div>
 	</div>	
 		

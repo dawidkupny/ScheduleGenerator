@@ -18,6 +18,11 @@ public class UserService {
 		userDao.create(user);
 	}
 	
+	public void addUserByAdmin(String username, String email, String password, User adminUser, String role) {
+		String nip = adminUser.getCompanyNip();
+		addUser(username, email, password, nip, role);
+	}
+	
 	public User getUserById(long userId) {
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		UserDAO userDao = factory.getUserDAO();
