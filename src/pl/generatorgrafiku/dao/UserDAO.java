@@ -8,4 +8,5 @@ public interface UserDAO extends GenericDAO<User, Long>{
 	
 	List<User> getAll();
 	User getUserByUsername(String username);
+	public List<User> getUserByNip(String companyNip);
 }

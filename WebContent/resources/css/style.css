@@ -63,8 +63,35 @@ p {
 	border-radius: 3px 3px 3px 3px;
 }
 
+#inp3 {
+	margin-bottom: 10px;
+	width:50%;
+	float:left;
+}
+#inp3 {
+	margin-bottom: 10px;
+	width:49%;
+	float:left;
+}
+#inp4 {
+	margin-bottom: 10px;
+	width:49%;
+	float:left;
+	margin-left: 2%;
+}
+
 .content {
 	padding-top: 5%;
 	padding-bottom: 5%;
 }
 
+.table {
+	margin: auto;
+	width: 85% !important;
+	margin-bottom: 5%;
+}
+
+#tablenav {
+	font-size: 16px;
+	font-weight: bold;
+}

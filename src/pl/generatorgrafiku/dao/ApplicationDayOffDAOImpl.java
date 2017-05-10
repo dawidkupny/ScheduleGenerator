@@ -25,6 +25,9 @@ public class ApplicationDayOffDAOImpl implements ApplicationDayOffDAO{
 	private static final String READ_ALL_APPLICATION_DAY_OFF = 
 			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, application_day_off_id, day, reason FROM application_form_day_off LEFT JOIN user ON application_form_day_off.user_user_id = user.user_id WHERE company_company_NIP = :companyNip;";
 	
+	private static final String READ_MONTH_APPLICATION_DAY_OFF = 
+			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, application_day_off_id, day, reason FROM application_form_day_off LEFT JOIN user ON application_form_day_off.user_user_id = user.user_id WHERE company_company_NIP = :companyNip AND day LIKE :month;";
+	
 	private NamedParameterJdbcTemplate template;
 	
 	public ApplicationDayOffDAOImpl() {
@@ -76,6 +79,16 @@ public class ApplicationDayOffDAOImpl implements ApplicationDayOffDAO{
 	public List<ApplicationDayOff> getAllApplicationDayOffCompanyNip(String companyNip) {
 		SqlParameterSource paramSource = new MapSqlParameterSource("companyNip", companyNip);
 		List<ApplicationDayOff> applicationDayOff = template.query(READ_ALL_APPLICATION_DAY_OFF, paramSource, new ApplicationDayOffMapper());
+		return applicationDayOff;
+	}
+	
+	@Override
+	public List<ApplicationDayOff> getApplicationDayOffMonthCompanyNip(String companyNip, String month) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("companyNip", companyNip);
+		paramMap.put("month", month+"%");
+		SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
+		List<ApplicationDayOff> applicationDayOff = template.query(READ_MONTH_APPLICATION_DAY_OFF, paramSource, new ApplicationDayOffMapper());
 		return applicationDayOff;
 	}
 	

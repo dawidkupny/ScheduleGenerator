@@ -62,6 +62,8 @@
 			    	<div class="col col-sm-6">
 				    	<form class="form-signin" method="post" action="registerUser">
 						<h2 class="form-signin-heading">Zarejestruj pracownika</h2><br>
+							<input id="inp3" name="inputFirstName" type="text" class="form-control" placeholder="Imię" required />
+							<input id="inp4" name="inputLastName" type="text" class="form-control" placeholder="Nazwisko" required />
 							<input id="inp2" name="inputEmail" type="email" class="form-control" placeholder="Email" required />
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
@@ -82,7 +84,7 @@
 	    <div class="col col-lg-1 col-md-1">
 		</div>
 	    	<div class="col col-sm-8">
-	    		<form class="form-signin" method="post" action="readAppli">
+	    		<form class="form-signin" method="get" action="readMonthAppli">
 			    	<h2 class="form-signin-heading">Wyświetl wnioski pracowników z danego miesiąca</h2><br>
 		      		<input name="inputMonth" type="month" class="form-control" />
 		      		<input class="btn btn-lg btn-primary" type="submit" value="Pokaż" />
@@ -174,18 +176,7 @@
 		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col col-lg-1 col-md-1">
-			</div>
-	    	<div class="col col-sm-8">
-		      <h2>Our Values</h2><br>
-		      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	    	</div>
-	  	</div>
 	</div>	
-	<br/>
 	
 	<div id="checkSchedule" class="container content">
 		<div class="row">
@@ -197,38 +188,39 @@
 		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col col-lg-1 col-md-1">
-			</div>
-	    	<div class="col col-sm-8">
-		      <h2>Our Values</h2><br>
-		      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	    	</div>
-	  	</div>
 	</div>	
-	<br/>
 	
 	<div id="empList" class="container content">
 		<div class="row">
-	    <div class="col col-lg-2 col-md-2">
-		</div>
+	    	<div class="col col-lg-1 col-md-1">
+			</div>
 	    	<div class="col col-sm-8">
-		    	<h2>Lista pracowników</h2><br>
-		   		<table style="width:50%" border="1">
-		   		<tr>
-		   			<th>Imie</th><th>Nazwisko</th><th>E-mail</th>
-		   		</tr>
-		   		<tr>
-		   			<td>Jan</td><td>Kowalski</td><td>jan@kowalski.com</td>
-		   		</tr>
-		   		</table>
-		   </div>
+	    		<form class="form-signin" method="get" action="readUsers">
+			    	<h2 class="form-signin-heading">Wyświetl wszystkich pracowników</h2><br>
+		      		<input class="btn btn-lg btn-primary" type="submit" value="Pokaż" />
+	      		</form>
+			</div>
 		</div>
 	</div>	
-	<br/>		
 			
+	<c:if test="${not empty requestScope.allUsers}">
+		<div class="container table-responsive">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr id="tablenav">
+						<th>Nick</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<c:forEach var="users" items="${requestScope.allUsers}">
+					<tr>
+						<td><c:out value="${users.username}"/></td> 
+						<td><c:out value="${users.email }"></c:out></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</c:if>		
 
 <script>
 $(document).ready(function(){

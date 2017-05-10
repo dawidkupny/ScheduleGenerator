@@ -41,4 +41,19 @@ public class ApplicationDayOffService {
 		}
 		return applicationDay;
 	}
+	
+	public List<ApplicationDayOff> getApplicationDayOffMonthCompanyNip() {
+		return getApplicationDayOffMonthCompanyNip(null, null, null);
+	}
+	
+	public List<ApplicationDayOff> getApplicationDayOffMonthCompanyNip(User user, String month, Comparator<ApplicationDayOff> comparator) {
+		String companyNip = user.getCompanyNip();
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		ApplicationDayOffDAO applicationDayDao = factory.getApplicationDayOffDAO();
+		List<ApplicationDayOff> applicationDay = applicationDayDao.getApplicationDayOffMonthCompanyNip(companyNip, month);
+		if(comparator != null && applicationDay!=null) {
+			applicationDay.sort(comparator);
+		}
+		return applicationDay;
+	}
 }

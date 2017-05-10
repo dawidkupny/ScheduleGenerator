@@ -1,5 +1,8 @@
 package pl.generatorgrafiku.service;
 
+import java.util.Comparator;
+import java.util.List;
+
 import pl.generatorgrafiku.dao.DAOFactory;
 import pl.generatorgrafiku.dao.UserDAO;
 import pl.generatorgrafiku.model.User;
@@ -35,5 +38,20 @@ public class UserService {
 		UserDAO userDao = factory.getUserDAO();
 		User user = userDao.getUserByUsername(username);
 		return user;
+	}
+	
+	public List<User> getAllUsersByNip() {
+		return getAllUsersByNip(null, null);
+	}
+	
+	public List<User> getAllUsersByNip(User user, Comparator<User> comparator) {
+		String companyNip = user.getCompanyNip();
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		UserDAO userDao = factory.getUserDAO();
+		List<User> Allusers = userDao.getUserByNip(companyNip);
+		if(comparator != null && Allusers!=null) {
+			Allusers.sort(comparator);
+		}
+		return Allusers;
 	}
 }

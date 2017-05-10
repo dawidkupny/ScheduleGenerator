@@ -15,30 +15,30 @@ import pl.generatorgrafiku.model.User;
 import pl.generatorgrafiku.service.ApplicationDayOffService;
 import pl.generatorgrafiku.service.ApplicationLeaveService;
 
-
-@WebServlet("/readAllAppli")
-public class ReadAllApplicationsController extends HttpServlet {
+@WebServlet("/readMonthAppli")
+public class ReadMonthApplicationsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		saveAllApplicationsInRequest(request);
+		saveMonthApplicationsInRequest(request);
 		request.getRequestDispatcher("adminpage.jsp").forward(request, response);
 	}
 	
-	private void saveAllApplicationsInRequest(HttpServletRequest request) {
+	private void saveMonthApplicationsInRequest(HttpServletRequest request) {
 		User authenticatedUser = (User) request.getSession().getAttribute("user");
+		String month = request.getParameter("inputMonth");
 		ApplicationDayOffService applicationDayOffService = new ApplicationDayOffService();
-		List<ApplicationDayOff> allApplicationsDayOff = applicationDayOffService.getAllApplicationDayOffByCompanyNip(authenticatedUser, 
+		List<ApplicationDayOff> monthApplicationDayOff = applicationDayOffService.getApplicationDayOffMonthCompanyNip(authenticatedUser, month, 
 				(d1, d2) -> d1.getDay().compareTo(d2.getDay()));
 		ApplicationLeaveService applicationLeaveService = new ApplicationLeaveService();
-		List<ApplicationLeave> allApplicationsLeave = applicationLeaveService.getAllApplicationLeaveByCompanyNip(authenticatedUser, 
+		List<ApplicationLeave> monthApplicationsLeave = applicationLeaveService.getApplicationLeaveMonthCompanyNip(authenticatedUser, month, 
 				(d1, d2) -> d1.getFirstDay().compareTo(d2.getFirstDay()));
-		if(allApplicationsDayOff.isEmpty() && allApplicationsLeave.isEmpty()) {
+		if(monthApplicationDayOff.isEmpty() && monthApplicationsLeave.isEmpty()) {
 			String noResults = "Brak wyników";
 			request.setAttribute("noneApplicationsDayOff", noResults);
 		} else {
-			request.setAttribute("applicationsDayOff", allApplicationsDayOff);
-			request.setAttribute("applicationsLeave", allApplicationsLeave);
+			request.setAttribute("applicationsDayOff", monthApplicationDayOff);
+			request.setAttribute("applicationsLeave", monthApplicationsLeave);
 		}
 		
 	}

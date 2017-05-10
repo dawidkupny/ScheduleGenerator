@@ -41,4 +41,19 @@ public class ApplicationLeaveService {
 		}
 		return applicationLeave;
 	}
+	
+	public List<ApplicationLeave> getApplicationLeaveMonthCompanyNip() {
+		return getApplicationLeaveMonthCompanyNip(null, null, null);
+	}
+	
+	public List<ApplicationLeave> getApplicationLeaveMonthCompanyNip(User user, String month, Comparator<ApplicationLeave> comparator) {
+		String companyNip = user.getCompanyNip();
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		ApplicationLeaveDAO applicationLeaveDao = factory.getApplicationLeaveDAO();
+		List<ApplicationLeave> applicationLeave = applicationLeaveDao.getApplicationLeaveMonthCompanyNip(companyNip, month);
+		if(comparator != null && applicationLeave!=null) {
+			applicationLeave.sort(comparator);
+		}
+		return applicationLeave;
+	}
 }

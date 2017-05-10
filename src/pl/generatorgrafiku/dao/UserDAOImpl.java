@@ -2,7 +2,9 @@ package pl.generatorgrafiku.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -16,13 +18,17 @@ import pl.generatorgrafiku.model.User;
 import pl.generatorgrafiku.util.ConnectionProvider;
 
 public class UserDAOImpl implements UserDAO {
-
+	private static final String USER_ROLE = "user";
+	
 	private static final String CREATE_USER =
 			"INSERT INTO user(username, email, is_hired, password, company_company_NIP) VALUES (:username, :email, :is_hired, :password, :companyNip);"; 		
 	private static final String READ_USER = 
 			"SELECT user_id, username, email, is_hired, password, company_company_NIP FROM user WHERE user_id = :id;";
 	private static final String READ_USER_BY_USERNAME = 
 			"SELECT user_id, username, email, is_hired, password, company_company_NIP FROM user WHERE username = :username;";
+	
+	private static final String READ_ALL_USERES_BY_NIP =
+			"SELECT user_id, user.username, email, is_hired, password, company_company_NIP, user_role.role_name FROM user, user_role WHERE user.username = user_role.username AND company_company_NIP = :companyNip AND role_name = :userRole;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -83,6 +89,16 @@ public class UserDAOImpl implements UserDAO {
 		return resultUser;
 	}
 	
+	@Override
+	public List<User> getUserByNip(String companyNip) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("companyNip", companyNip);
+		paramMap.put("userRole", USER_ROLE);
+		SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
+		List<User> resultUser = template.query(READ_ALL_USERES_BY_NIP, paramSource, new UserRowMapper());
+		return resultUser;
+	}
+	
 	private class UserRowMapper implements RowMapper<User> {
 
 		@Override
@@ -93,9 +109,9 @@ public class UserDAOImpl implements UserDAO {
 			user.setEmail(resultSet.getString("email"));
 			user.setPassword(resultSet.getString("password"));
 			user.setCompanyNip(resultSet.getString("company_company_NIP"));
+			user.setIs_hired(resultSet.getBoolean("is_hired"));
 			return user;
 		}
-		
 	}
 
 }

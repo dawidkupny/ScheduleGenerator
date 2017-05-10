@@ -25,6 +25,9 @@ public class ApplicationLeaveDAOImpl implements ApplicationLeaveDAO{
 	private static final String READ_ALL_APPLICATION_LEAVE = 
 			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, idapplication_leave_id, first_day, last_day FROM application_form_leave LEFT JOIN user ON application_form_leave.user_user_id = user.user_id WHERE company_company_NIP = :companyNip;";
 	
+	private static final String READ_MONTH_APPLICATION_LEAVE = 
+			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, idapplication_leave_id, first_day, last_day FROM application_form_leave LEFT JOIN user ON application_form_leave.user_user_id = user.user_id WHERE company_company_NIP = :companyNip AND first_day LIKE :month;";
+	
 	private NamedParameterJdbcTemplate template;
 	
 	public ApplicationLeaveDAOImpl() {
@@ -76,6 +79,16 @@ public class ApplicationLeaveDAOImpl implements ApplicationLeaveDAO{
 	public List<ApplicationLeave> getAllApplicationLeaveCompanyNip(String companyNip) {
 		SqlParameterSource paramSource = new MapSqlParameterSource("companyNip", companyNip);
 		List<ApplicationLeave> applicationLeave = template.query(READ_ALL_APPLICATION_LEAVE, paramSource, new ApplicationLeaveMapper());
+		return applicationLeave;
+	}
+	
+	@Override
+	public List<ApplicationLeave> getApplicationLeaveMonthCompanyNip(String companyNip, String month) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("companyNip", companyNip);
+		paramMap.put("month", month+"%");
+		SqlParameterSource paramSource = new MapSqlParameterSource(paramMap);
+		List<ApplicationLeave> applicationLeave = template.query(READ_MONTH_APPLICATION_LEAVE, paramSource, new ApplicationLeaveMapper());
 		return applicationLeave;
 	}
 	

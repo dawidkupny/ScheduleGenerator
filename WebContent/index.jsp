@@ -28,10 +28,10 @@
        				</button>
 			
 					<div class="collapse navbar-collapse navHeaderCollapse">
-	          			<form class="form-signin" method="post" action="j_security_check">
+	          			<form class="form-signin" method="post" action="login">
 	         	 			<ul class="nav navbar-nav navbar-right">
-	           					<li><input id="inp1" name="j_username" type="text" class="form-control" placeholder="Nazwa użytkownika" required autofocus /></li>
-	            				<li><input id="inp1" name="j_password" type="password" class="form-control" placeholder="Hasło" required /></li>
+	           					<li><input id="inp1" name="username" type="text" class="form-control" placeholder="Nazwa użytkownika" required autofocus /></li>
+	            				<li><input id="inp1" name="password" type="password" class="form-control" placeholder="Hasło" required /></li>
 	            				<li><input id="inp1" type="submit" class="btn btn-info" value="Zaloguj się"></li>
 	          				</ul>
 	          			</form>
@@ -59,6 +59,8 @@
 						<h2 class="form-signin-heading">Zarejestruj swoją firmę!</h2>
 							<input id="inp2" name="inputCompany" type="text" class="form-control" placeholder="Nazwa firmy" required/>
 							<input id="inp2" name="inputNip" type="text" class="form-control" placeholder="NIP" required />
+							<input id="inp3" name="inputFirstName" type="text" class="form-control" placeholder="Imię" required />
+							<input id="inp4" name="inputLastName" type="text" class="form-control" placeholder="Nazwisko" required />
 							<input id="inp2" name="inputEmail" type="email" class="form-control" placeholder="Email" required />
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
