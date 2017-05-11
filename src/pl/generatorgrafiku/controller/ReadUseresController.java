@@ -17,8 +17,12 @@ public class ReadUseresController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		saveAllUsersInRequest(request);
-		request.getRequestDispatcher("adminpage.jsp").forward(request, response);
+		if(request.getUserPrincipal() != null && request.isUserInRole("admin") == true) {
+			saveAllUsersInRequest(request);
+			request.getRequestDispatcher("WEB-INF/adminpage.jsp").forward(request, response);
+        } else {
+            response.sendError(403);
+        }
 	}
 
 	private void saveAllUsersInRequest(HttpServletRequest request) {

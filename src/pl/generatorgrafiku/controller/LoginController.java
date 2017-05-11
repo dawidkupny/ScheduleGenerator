@@ -22,11 +22,11 @@ public class LoginController extends HttpServlet {
 			return;
 		}
 		if(request.getUserPrincipal() != null && request.isUserInRole("admin") == true) {
-			page="/adminpage.jsp";
+			page="WEB-INF/adminpage.jsp";
 		} if(request.getUserPrincipal() != null && request.isUserInRole("user") == true) {
-			page="/userpage.jsp";
+			page="WEB-INF/userpage.jsp";
 		} if(request.getUserPrincipal() != null) {
-			response.sendRedirect(request.getContextPath()+page);
+			request.getRequestDispatcher(page).forward(request, response);;
 		} else	{
 			response.sendError(403);
 		}

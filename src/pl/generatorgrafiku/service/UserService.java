@@ -8,9 +8,11 @@ import pl.generatorgrafiku.dao.UserDAO;
 import pl.generatorgrafiku.model.User;
 
 public class UserService {
-	public void addUser(String username, String email, String password, String companyNip, String role) {
+	public void addUser(String username, String firstName, String lastName, String email, String password, String companyNip, String role) {
 		User user = new User();
 		user.setUsername(username);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setCompanyNip(companyNip);
@@ -21,9 +23,9 @@ public class UserService {
 		userDao.create(user);
 	}
 	
-	public void addUserByAdmin(String username, String email, String password, User adminUser, String role) {
+	public void addUserByAdmin(String username, String firstName, String lastName, String email, String password, User adminUser, String role) {
 		String nip = adminUser.getCompanyNip();
-		addUser(username, email, password, nip, role);
+		addUser(username, firstName, lastName, email, password, nip, role);
 	}
 	
 	public User getUserById(long userId) {

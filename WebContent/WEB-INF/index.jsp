@@ -21,7 +21,7 @@
 			
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container">
-					<a href="#" class="navbar-brand"><span><img src="resources/css/img/logo.png"/></span>generatorgrafiku.pl</a>
+					<a href="${pageContext.request.contextPath}" class="navbar-brand"><span><img src="resources/css/img/logo.png"/></span>generatorgrafiku.pl</a>
 			
 					<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
           				<span class="glyphicon glyphicon-list"></span>
@@ -65,7 +65,7 @@
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
 							<hr/>
-							<p>Klikając przycisk Zarejestruj, akceptujesz nasz <a href="#">Regulamin</a>.</p>
+							<p>Klikając przycisk Zarejestruj, akceptujesz nasz <a href="${pageContext.request.contextPath}/regulations">Regulamin</a>.</p>
 							<hr/>
 							<button class="btn btn-lg btn-primary " type="submit">Zarejestruj</button>
 						</form>

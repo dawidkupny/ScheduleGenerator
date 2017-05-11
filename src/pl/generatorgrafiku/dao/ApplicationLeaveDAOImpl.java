@@ -23,10 +23,10 @@ public class ApplicationLeaveDAOImpl implements ApplicationLeaveDAO{
 			"INSERT INTO application_form_leave (first_day, last_day, user_user_id, user_company_company_NIP) VALUES(:firstDay, :lastDay, :userId, :companyNip);";
 	
 	private static final String READ_ALL_APPLICATION_LEAVE = 
-			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, idapplication_leave_id, first_day, last_day FROM application_form_leave LEFT JOIN user ON application_form_leave.user_user_id = user.user_id WHERE company_company_NIP = :companyNip;";
+			"SELECT user.user_id, username, first_name, last_name, email, is_hired, company_company_NIP, password, idapplication_leave_id, first_day, last_day FROM application_form_leave LEFT JOIN user ON application_form_leave.user_user_id = user.user_id WHERE company_company_NIP = :companyNip;";
 	
 	private static final String READ_MONTH_APPLICATION_LEAVE = 
-			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, idapplication_leave_id, first_day, last_day FROM application_form_leave LEFT JOIN user ON application_form_leave.user_user_id = user.user_id WHERE company_company_NIP = :companyNip AND first_day LIKE :month;";
+			"SELECT user.user_id, username, first_name, last_name, email, is_hired, company_company_NIP, password, idapplication_leave_id, first_day, last_day FROM application_form_leave LEFT JOIN user ON application_form_leave.user_user_id = user.user_id WHERE company_company_NIP = :companyNip AND first_day LIKE :month;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -104,6 +104,8 @@ public class ApplicationLeaveDAOImpl implements ApplicationLeaveDAO{
 			User user = new User();
 			user.setId(resultSet.getLong("user_id"));
 			user.setUsername(resultSet.getString("username"));
+			user.setFirstName(resultSet.getString("first_name"));
+			user.setLastName(resultSet.getString("last_name"));
 			user.setEmail(resultSet.getString("email"));
 			user.setIs_hired(resultSet.getBoolean("is_hired"));
 			user.setCompanyNip(resultSet.getString("company_company_NIP"));

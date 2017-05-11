@@ -21,14 +21,14 @@ public class UserDAOImpl implements UserDAO {
 	private static final String USER_ROLE = "user";
 	
 	private static final String CREATE_USER =
-			"INSERT INTO user(username, email, is_hired, password, company_company_NIP) VALUES (:username, :email, :is_hired, :password, :companyNip);"; 		
+			"INSERT INTO user(username, first_name, last_name, email, is_hired, password, company_company_NIP) VALUES (:username, :firstName, :lastName, :email, :is_hired, :password, :companyNip);"; 		
 	private static final String READ_USER = 
-			"SELECT user_id, username, email, is_hired, password, company_company_NIP FROM user WHERE user_id = :id;";
+			"SELECT user_id, username, first_name, last_name, email, is_hired, password, company_company_NIP FROM user WHERE user_id = :id;";
 	private static final String READ_USER_BY_USERNAME = 
-			"SELECT user_id, username, email, is_hired, password, company_company_NIP FROM user WHERE username = :username;";
+			"SELECT user_id, username, first_name, last_name, email, is_hired, password, company_company_NIP FROM user WHERE username = :username;";
 	
 	private static final String READ_ALL_USERES_BY_NIP =
-			"SELECT user_id, user.username, email, is_hired, password, company_company_NIP, user_role.role_name FROM user, user_role WHERE user.username = user_role.username AND company_company_NIP = :companyNip AND role_name = :userRole;";
+			"SELECT user_id, user.username, first_name, last_name, email, is_hired, password, company_company_NIP, user_role.role_name FROM user, user_role WHERE user.username = user_role.username AND company_company_NIP = :companyNip AND role_name = :userRole;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -106,6 +106,8 @@ public class UserDAOImpl implements UserDAO {
 			User user = new User();
 			user.setId(resultSet.getLong("user_id"));
 			user.setUsername(resultSet.getString("username"));
+			user.setFirstName(resultSet.getString("first_name"));
+			user.setLastName(resultSet.getString("last_name"));
 			user.setEmail(resultSet.getString("email"));
 			user.setPassword(resultSet.getString("password"));
 			user.setCompanyNip(resultSet.getString("company_company_NIP"));

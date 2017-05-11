@@ -16,7 +16,7 @@
 			
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container">
-					<a href="#" class="navbar-brand"><span><img src="resources/css/img/logo.png"/></span>generatorgrafiku.pl</a>
+					<a href="${pageContext.request.contextPath}" class="navbar-brand"><span><img src="resources/css/img/logo.png"/></span>generatorgrafiku.pl</a>
 			
 				</div>
 			</nav>
@@ -30,7 +30,7 @@
 						Dziękujemy za rejestrację!
 						</h3>
 						<br/>
-						<p><a href="#">Powrót do strony głównej.</a></p>
+						<p><a href="${pageContext.request.contextPath}">Powrót do strony głównej.</a></p>
 					</section>
 				</div>
 			

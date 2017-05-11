@@ -17,9 +17,11 @@ public class ApplicationDayOffController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getUserPrincipal() != null) {
-			request.getRequestDispatcher("/index.jsp").forward(request, response); //??
-		}
+		if(request.getUserPrincipal() != null && request.isUserInRole("user") == true) {
+			request.getRequestDispatcher("WEB-INF/userpage.jsp").forward(request, response);
+		} else {
+            response.sendError(403);
+        }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +33,7 @@ public class ApplicationDayOffController extends HttpServlet {
 		if(request.getUserPrincipal() != null) {
 			ApplicationDayOffService applicationDayService = new ApplicationDayOffService();
 			applicationDayService.addApplicationDayOff(day, reason, authenticatedUser);
-			response.sendRedirect(request.getContextPath()+"/index.jsp");  //mozna uzupelnic o informacje np dodatkowa strone, twoj wniosek zostal przeslany kliknij by wrocic na strone..
+			request.getRequestDispatcher("WEB-INF/applisuccess.jsp").forward(request, response);
 		} else {
 			response.sendError(403);
 		}

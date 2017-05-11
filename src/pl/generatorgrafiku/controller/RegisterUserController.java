@@ -16,18 +16,20 @@ public class RegisterUserController extends HttpServlet {
 	private static final String USER_ROLE = "user";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("adminpage.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User authenticatedUser = (User) request.getSession().getAttribute("user");
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("inputEmail");
+		String firstName = request.getParameter("inputFirstName");
+		String lastName = request.getParameter("inputLastName");
 		String username = request.getParameter("inputUsername");
 		String password = request.getParameter("inputPassword");
 		UserService userService = new UserService();
-		userService.addUserByAdmin(username, email, password, authenticatedUser, USER_ROLE);
-		response.sendRedirect(request.getContextPath()+"/afterregister.jsp");
+		userService.addUserByAdmin(username, firstName, lastName, email, password, authenticatedUser, USER_ROLE);
+		request.getRequestDispatcher("WEB-INF/afterregister.jsp").forward(request, response);
 	}
 
 }

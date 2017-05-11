@@ -23,10 +23,10 @@ public class ApplicationDayOffDAOImpl implements ApplicationDayOffDAO{
 			"INSERT INTO application_form_day_off (day, reason, user_user_id, user_company_company_NIP) VALUES (:day, :reason, :userId, :companyNip);";
 	
 	private static final String READ_ALL_APPLICATION_DAY_OFF = 
-			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, application_day_off_id, day, reason FROM application_form_day_off LEFT JOIN user ON application_form_day_off.user_user_id = user.user_id WHERE company_company_NIP = :companyNip;";
+			"SELECT user.user_id, username, first_name, last_name, email, is_hired, company_company_NIP, password, application_day_off_id, day, reason FROM application_form_day_off LEFT JOIN user ON application_form_day_off.user_user_id = user.user_id WHERE company_company_NIP = :companyNip;";
 	
 	private static final String READ_MONTH_APPLICATION_DAY_OFF = 
-			"SELECT user.user_id, username, email, is_hired, company_company_NIP, password, application_day_off_id, day, reason FROM application_form_day_off LEFT JOIN user ON application_form_day_off.user_user_id = user.user_id WHERE company_company_NIP = :companyNip AND day LIKE :month;";
+			"SELECT user.user_id, username, first_name, last_name, email, is_hired, company_company_NIP, password, application_day_off_id, day, reason FROM application_form_day_off LEFT JOIN user ON application_form_day_off.user_user_id = user.user_id WHERE company_company_NIP = :companyNip AND day LIKE :month;";
 	
 	private NamedParameterJdbcTemplate template;
 	
@@ -104,6 +104,8 @@ public class ApplicationDayOffDAOImpl implements ApplicationDayOffDAO{
 			User user = new User();
 			user.setId(resultSet.getLong("user_id"));
 			user.setUsername(resultSet.getString("username"));
+			user.setFirstName(resultSet.getString("first_name"));
+			user.setLastName(resultSet.getString("last_name"));
 			user.setEmail(resultSet.getString("email"));
 			user.setIs_hired(resultSet.getBoolean("is_hired"));
 			user.setCompanyNip(resultSet.getString("company_company_NIP"));

@@ -68,7 +68,7 @@
 							<input id="inp2" name="inputUsername" type="text" class="form-control" placeholder="Nazwa użytkownika" required />
 							<input id="inp2" name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
 							<hr/>
-							<p>Klikając przycisk Zarejestruj, akceptujesz nasz <a href="#">Regulamin</a>.</p>
+							<p>Klikając przycisk Zarejestruj, akceptujesz nasz <a href="${pageContext.request.contextPath}/regulations">Regulamin</a>.</p>
 							<hr/>
 							<button class="btn btn-lg btn-primary " type="submit">Zarejestruj</button>
 						</form>
@@ -119,7 +119,7 @@
 	    			<div class="col col-lg-1 col-md-1">
 					</div>
 	    			<div class="col col-sm-8">
-	    				<li><h4>Dodane przez: <c:out value="${applicationDay.user.username}"/>, 
+	    				<li><h4>Dodane przez: <c:out value="${applicationDay.user.firstName}"/> <c:out value="${applicationDay.user.lastName}"/>, 
 	    				Dzień: <fmt:formatDate value="${applicationDay.day }" pattern="dd/MM/YYYY"/></h4>
 	    				<p><c:out value="${applicationDay.reason }"></c:out></p></li>
 		     		</div>
@@ -144,7 +144,7 @@
 	    			<div class="col col-lg-1 col-md-1">
 					</div>
 	    			<div class="col col-sm-8">
-	    				<li><h4>Dodane przez: <c:out value="${applicationLeave.user.username}"/><br/> </h4>
+	    				<li><h4>Dodane przez: <c:out value="${applicationLeave.user.firstName}"/> <c:out value="${applicationLeave.user.lastName}"/><br/> </h4>
 	    				<p>Od: <fmt:formatDate value="${applicationLeave.firstDay }" pattern="dd/MM/YYYY"/><br/>
 	    				do: <fmt:formatDate value="${applicationLeave.lastDay }" pattern="dd/MM/YYYY"/></p></li>
 		     		</div>
@@ -208,18 +208,33 @@
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr id="tablenav">
+						<th>Imię</th>
+						<th>Nazwisko</th>
 						<th>Nick</th>
 						<th>Email</th>
 					</tr>
 				</thead>
 				<c:forEach var="users" items="${requestScope.allUsers}">
 					<tr>
+						<td><c:out value="${users.firstName}"/></td> 
+						<td><c:out value="${users.lastName}"/></td> 
 						<td><c:out value="${users.username}"/></td> 
 						<td><c:out value="${users.email }"></c:out></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
+	</c:if>
+	<c:if test="${not empty requestScope.noUsers}">
+		<div class="container">
+				<div class="row">
+	    			<div class="col col-lg-1 col-md-1">
+					</div>
+	    			<div class="col col-sm-8" style="margin-bottom:5%">
+	    				<p>Brak Pracowników</p>
+		     		</div>
+				</div>
+			</div>	
 	</c:if>		
 
 <script>
