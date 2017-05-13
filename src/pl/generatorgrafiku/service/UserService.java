@@ -1,5 +1,8 @@
 package pl.generatorgrafiku.service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Comparator;
 import java.util.List;
 
@@ -14,13 +17,26 @@ public class UserService {
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setEmail(email);
-		user.setPassword(password);
+		String md5Pass = encryptPassword(password);
+		user.setPassword(md5Pass);
 		user.setCompanyNip(companyNip);
 		user.setRole(role);
 		user.setIs_hired(true);
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		UserDAO userDao = factory.getUserDAO();
 		userDao.create(user);
+	}
+	
+	private String encryptPassword(String password) {
+		MessageDigest digest = null;
+		try {
+			digest = MessageDigest.getInstance("MD5");
+		} catch(NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		digest.update(password.getBytes());
+		String md5Password = new BigInteger(1, digest.digest()).toString(16);
+		return md5Password;
 	}
 	
 	public void addUserByAdmin(String username, String firstName, String lastName, String email, String password, User adminUser, String role) {
