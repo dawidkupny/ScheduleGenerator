@@ -84,10 +84,10 @@
 	    <div class="col col-lg-1 col-md-1">
 		</div>
 	    	<div class="col col-sm-8">
-	    		<form class="form-signin" method="get" action="readMonthAppli">
+	    		<form class="form-signin input-group" method="get" action="readMonthAppli">
 			    	<h2 class="form-signin-heading">Wyświetl wnioski pracowników z danego miesiąca</h2><br>
 		      		<input name="inputMonth" type="month" class="form-control" />
-		      		<input class="btn btn-lg btn-primary" type="submit" value="Pokaż" />
+		      		<input id="topmargin" class="btn btn-lg btn-primary" type="submit" value="Pokaż" />
 	      		</form>
 			</div>
 		</div>
@@ -118,8 +118,8 @@
 				<div class="row">
 	    			<div class="col col-lg-1 col-md-1">
 					</div>
-	    			<div class="col col-sm-8">
-	    				<li><h4>Dodane przez: <c:out value="${applicationDay.user.firstName}"/> <c:out value="${applicationDay.user.lastName}"/>, 
+	    			<div class="col col-sm-8 checkbox">
+	    				<li><input name="checkboxName" type="checkbox" value="-${applicationDay.day } od ${applicationDay.user.lastName}"><h4>Dodane przez: <c:out value="${applicationDay.user.firstName}"/> <c:out value="${applicationDay.user.lastName}"/>, 
 	    				Dzień: <fmt:formatDate value="${applicationDay.day }" pattern="dd/MM/YYYY"/></h4>
 	    				<p><c:out value="${applicationDay.reason }"></c:out></p></li>
 		     		</div>
@@ -143,8 +143,8 @@
 				<div class="row">
 	    			<div class="col col-lg-1 col-md-1">
 					</div>
-	    			<div class="col col-sm-8">
-	    				<li><h4>Dodane przez: <c:out value="${applicationLeave.user.firstName}"/> <c:out value="${applicationLeave.user.lastName}"/><br/> </h4>
+	    			<div class="col col-sm-8 checkbox">
+	    				<li><input name="checkboxName" type="checkbox" value="-${applicationLeave.firstDay } - ${applicationLeave.lastDay } od ${applicationLeave.user.lastName}"><h4>Dodane przez: <c:out value="${applicationLeave.user.firstName}"/> <c:out value="${applicationLeave.user.lastName}"/><br/> </h4>
 	    				<p>Od: <fmt:formatDate value="${applicationLeave.firstDay }" pattern="dd/MM/YYYY"/><br/>
 	    				do: <fmt:formatDate value="${applicationLeave.lastDay }" pattern="dd/MM/YYYY"/></p></li>
 		     		</div>
@@ -171,24 +171,60 @@
 	    <div class="col col-lg-1 col-md-1">
 		</div>
 	    	<div class="col col-sm-8">
-		      <h2>About Company Page</h2><br>
-		      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		    	<h2>Generuj grafik</h2><br>
+		    	<h4>Przed wygenerowaniem grafiku zaznacz wnioski, które chcesz uwzględnić, oraz wybierz miesiąc, na który zamierzasz wygenerować grafik.</h4>
+				<textarea class="form-control" rows="5" id="textArea" disabled></textarea>
+				<form class="form-signin" method="get" action="someServlet">
+			    	<input id="topmargin" name="inputMonthScheduler" type="month" class="form-control" />
+		      		<input id="topmargin" class="btn btn-lg btn-primary" type="submit" value="Generuj" />
+	      		</form>
 			</div>
 		</div>
 	</div>	
 	
 	<div id="checkSchedule" class="container content">
 		<div class="row">
-	    <div class="col col-lg-1 col-md-1">
-		</div>
-	    	<div class="col col-sm-8">
-		      <h2>About Company Page</h2><br>
-		      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	    	<div class="col col-lg-1 col-md-1">
 			</div>
+	    	<div class="col col-sm-8">
+	    		<form class="form-signin input-group" method="get" action="someServlet">
+		      		<input name="inputWeek" type="week" class="form-control" />
+		      		<input id="topmargin" class="btn btn-md btn-primary" type="submit" value="Pokaż" />
+	      		</form>
+	    	</div>
+    	</div>
+   	</div>
+   	
+   	<%-- <c:if test="${not empty requestScope.someAttribute}"> --%>
+		<div class="container table-responsive">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr id="tablenav">
+						<th>Pracownik</th>
+						<th>Pon 15.05</th>
+						<th>Wt 16.05</th>
+						<th>Śr 17.05</th>
+						<th>Czw 18.05</th>
+						<th>Pt 19.05</th>
+						<th>Sb 20.05</th>
+						<th>Nd 21.05</th>
+					</tr>
+				</thead>
+				<c:forEach var="users" items="${requestScope.allUsers}">
+					<tr>
+						<td><c:out value="${users.firstName} ${users.lastName}"/></td> 
+						<td><c:out value="ZM1"/></td> 
+						<td><c:out value="ZM1"/></td> 
+						<td><c:out value="ZM1"/></td> 
+						<td><c:out value="ZM1"/></td> 
+						<td><c:out value="ZM2"/></td> 
+						<td><c:out value="ZM2"/></td> 
+						<td><c:out value="ZMN"></c:out></td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
-	</div>	
+	<%-- </c:if> --%>	
 	
 	<div id="empList" class="container content">
 		<div class="row">
@@ -236,7 +272,7 @@
 				</div>
 			</div>	
 	</c:if>		
-
+	
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
@@ -263,6 +299,14 @@ $(document).ready(function(){
     } // End if
   });
 })
+
+$("input[type='checkbox'][name*='checkboxName']").change(function(){
+	if($(this).is(':checked')) {
+		$('#textArea').val($('#textArea').val() + $(this).val() + "\n");
+    }else{
+    	$('#textArea').val($('#textArea').val().replace($(this).val(), "")); 
+    }
+});
 
 </script>
 

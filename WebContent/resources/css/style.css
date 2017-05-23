@@ -23,10 +23,6 @@ body {
   	width: 100%;
   	overflow-x: hidden;
 }
-
-/* .overfl {
-	overflow-x: hidden;     ----Raczej sie nie przyda
-} */
  
 .navbar {
 	padding-top: 0.5%;
@@ -65,11 +61,6 @@ p {
 
 #inp3 {
 	margin-bottom: 10px;
-	width:50%;
-	float:left;
-}
-#inp3 {
-	margin-bottom: 10px;
 	width:49%;
 	float:left;
 }
@@ -89,9 +80,14 @@ p {
 	margin: auto;
 	width: 85% !important;
 	margin-bottom: 5%;
+	font-weight: normal;
 }
 
 #tablenav {
 	font-size: 16px;
 	font-weight: bold;
+}
+
+#topmargin {
+	margin-top: 5px;
 }
