@@ -44,14 +44,11 @@
 					<div class="col col-lg-1 col-md-1">
 					</div>
 					<section class="col col-lg-4 col-md-5 col-sm-6 ">
-						<h2>
-						Lorem ipsum
-						</h2>
-						<p>
-						dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-						dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<h2> Witaj w Generatorze Grafiku! </h2>
+						<br/>
+						<p>Nasza aplikacja z łatwością pomoże przygotować grafik pracy dla Twoich pracowników. 
+						Dzięki niej w łatwy sposób uwzględnisz wnioski urlopowe, święta, a także przepisy wynikające bezpośrednio 
+						z Kodeksu Pracy. Rozwiązanie problemu harmonogramowania nigdy nie było tak proste! Zapraszamy do rejestracji!
 						</p>
 					</section>
 					<section class="col col-lg-4 col-lg-offset-2 col-md-5 col-sm-6 ">

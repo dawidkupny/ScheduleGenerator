@@ -50,10 +50,11 @@
 				 	<div class="col col-lg-1 col-md-1">
 					</div>
 				    <div class="col col-sm-8">
-				      <h2>Our Values</h2><br>
-				      <h4><strong>Tresc dla kierownika(?):</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-				      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				      <h3>Drogi Administratorze firmy!</h3><br/>
+				      <p>Zdajemy sobie sprawę z tego, że tworzenie harmonogramów pracy nigdy nie należało do wygodnych zadań, 
+				      z jakimi miałeś do czynienia. Specjalnie dla takich ludzi jak Ty przygotowaliśmy naszą aplikację. 
+				      Nie zwlekaj - już teraz możesz dodać pracowników, uwzględnić wybrane wnioski urlopowe/życzenia związane 
+				      z dniami wolnymi, a co najważniejsze - łatwo i szybko wygenerować grafik na najbliższy miesiąc! </p>
 				    </div>
 			  	 </div>
 				<div id="regEmployee" class="row">
@@ -105,82 +106,84 @@
 	</div>	
 	<br/>
 	
-	<c:if test="${not empty requestScope.applicationsDayOff}">
-		<div class="container">
-			<div class="col col-lg-1 col-md-1">
-			</div>
-			<p>Wnioski o wolny dzień:</p>
-			<br/>
-		</div>
-		<ul>
-		<c:forEach var="applicationDay" items="${requestScope.applicationsDayOff}">
-			<div class="container">
-				<div class="row">
-	    			<div class="col col-lg-1 col-md-1">
+	<div>
+		<form class="form-signin" method="post" action="generateSchedule">
+			<c:if test="${not empty requestScope.applicationsDayOff}">
+				<div class="container">
+					<div class="col col-lg-1 col-md-1">
 					</div>
-	    			<div class="col col-sm-8 checkbox">
-	    				<li><input name="checkboxName" type="checkbox" value="-${applicationDay.day } od ${applicationDay.user.lastName}"><h4>Dodane przez: <c:out value="${applicationDay.user.firstName}"/> <c:out value="${applicationDay.user.lastName}"/>, 
-	    				Dzień: <fmt:formatDate value="${applicationDay.day }" pattern="dd/MM/YYYY"/></h4>
-	    				<p><c:out value="${applicationDay.reason }"></c:out></p></li>
-		     		</div>
+					<p>Wnioski o wolny dzień:</p>
+					<br/>
 				</div>
-			</div>
-			<br/>	
-		</c:forEach>
-		</ul>
-	</c:if>
-	<c:if test="${not empty requestScope.applicationsLeave}">
-		<br/>
-		<div class="container">
-			<div class="col col-lg-1 col-md-1">
-			</div>
-			<p>Wnioski o urlop:</p>
-			<br/>
-		</div>
-		<ul>
-		<c:forEach var="applicationLeave" items="${requestScope.applicationsLeave}">
-			<div class="container">
-				<div class="row">
-	    			<div class="col col-lg-1 col-md-1">
+				<ul>
+				<c:forEach var="applicationDay" items="${requestScope.applicationsDayOff}">
+					<div class="container">
+						<div class="row">
+			    			<div class="col col-lg-1 col-md-1">
+							</div>
+			    			<div class="col col-sm-8 checkbox">
+			    				<li><input name="checkboxName" type="checkbox" value="-${applicationDay.day } od ${applicationDay.user.lastName}"><h4>Dodane przez: <c:out value="${applicationDay.user.firstName}"/> <c:out value="${applicationDay.user.lastName}"/>, 
+			    				Dzień: <fmt:formatDate value="${applicationDay.day }" pattern="dd/MM/YYYY"/></h4>
+			    				<p><c:out value="${applicationDay.reason }"></c:out></p></li>
+				     		</div>
+						</div>
 					</div>
-	    			<div class="col col-sm-8 checkbox">
-	    				<li><input name="checkboxName" type="checkbox" value="-${applicationLeave.firstDay } - ${applicationLeave.lastDay } od ${applicationLeave.user.lastName}"><h4>Dodane przez: <c:out value="${applicationLeave.user.firstName}"/> <c:out value="${applicationLeave.user.lastName}"/><br/> </h4>
-	    				<p>Od: <fmt:formatDate value="${applicationLeave.firstDay }" pattern="dd/MM/YYYY"/><br/>
-	    				do: <fmt:formatDate value="${applicationLeave.lastDay }" pattern="dd/MM/YYYY"/></p></li>
-		     		</div>
+					<br/>	
+				</c:forEach>
+				</ul>
+			</c:if>
+			<c:if test="${not empty requestScope.applicationsLeave}">
+				<br/>
+				<div class="container">
+					<div class="col col-lg-1 col-md-1">
+					</div>
+					<p>Wnioski o urlop:</p>
+					<br/>
 				</div>
-			</div>
-			<br/>	
-		</c:forEach>
-		</ul>
-	</c:if>
-	<c:if test="${not empty requestScope.noneApplicationsDayOff}">
-		<div class="container">
-				<div class="row">
-	    			<div class="col col-lg-1 col-md-1">
+				<ul>
+				<c:forEach var="applicationLeave" items="${requestScope.applicationsLeave}">
+					<div class="container">
+						<div class="row">
+			    			<div class="col col-lg-1 col-md-1">
+							</div>
+			    			<div class="col col-sm-8 checkbox">
+			    				<li><input name="checkboxName" type="checkbox" value="-${applicationLeave.firstDay } - ${applicationLeave.lastDay } od ${applicationLeave.user.lastName}"><h4>Dodane przez: <c:out value="${applicationLeave.user.firstName}"/> <c:out value="${applicationLeave.user.lastName}"/><br/> </h4>
+			    				<p>Od: <fmt:formatDate value="${applicationLeave.firstDay }" pattern="dd/MM/YYYY"/><br/>
+			    				do: <fmt:formatDate value="${applicationLeave.lastDay }" pattern="dd/MM/YYYY"/></p></li>
+				     		</div>
+						</div>
 					</div>
-	    			<div class="col col-sm-8">
-	    				<p>Brak wniosków</p>
-		     		</div>
+					<br/>	
+				</c:forEach>
+				</ul>
+			</c:if>
+			<c:if test="${not empty requestScope.noneApplicationsDayOff}">
+				<div class="container">
+						<div class="row">
+			    			<div class="col col-lg-1 col-md-1">
+							</div>
+			    			<div class="col col-sm-8">
+			    				<p>Brak wniosków</p>
+				     		</div>
+						</div>
+					</div>	
+			</c:if>
+				
+			<div id="geneSchedule" class="container content">
+				<div class="row">
+			    <div class="col col-lg-1 col-md-1">
+				</div>
+			    	<div class="col col-sm-8">
+				    	<h2>Generuj grafik</h2><br>
+				    	<h4>Przed wygenerowaniem grafiku zaznacz wnioski, które chcesz uwzględnić, oraz wybierz miesiąc, na który zamierzasz wygenerować grafik.</h4>
+						<textarea class="form-control" rows="5" id="textArea" disabled></textarea>						
+				    	<input id="topmargin" name="inputMonthScheduler" type="month" class="form-control" />
+			      		<input id="topmargin" class="btn btn-lg btn-primary" type="submit" value="Generuj" />
+					</div>
 				</div>
 			</div>	
-	</c:if>
-		
-	<div id="geneSchedule" class="container content">
-		<div class="row">
-	    <div class="col col-lg-1 col-md-1">
-		</div>
-	    	<div class="col col-sm-8">
-		    	<h2>Generuj grafik</h2><br>
-		    	<h4>Przed wygenerowaniem grafiku zaznacz wnioski, które chcesz uwzględnić, oraz wybierz miesiąc, na który zamierzasz wygenerować grafik.</h4>
-				<textarea class="form-control" rows="5" id="textArea" disabled></textarea>
-				<form class="form-signin" method="get" action="someServlet">
-			    	<input id="topmargin" name="inputMonthScheduler" type="month" class="form-control" />
-		      		<input id="topmargin" class="btn btn-lg btn-primary" type="submit" value="Generuj" />
-	      		</form>
-			</div>
-		</div>
-	</div>	
+		</form>
+	</div>
 	
 	<div id="checkSchedule" class="container content">
 		<div class="row">

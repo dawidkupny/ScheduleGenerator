@@ -45,21 +45,10 @@
 			    <div class="col col-lg-1 col-md-1">
 				</div>
 			    	<div class="col col-sm-8">
-				      <h2>About Company Page</h2><br>
-				      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				      <h3>Witaj w panelu pracownika!</h3><br>
+				      <p>Możesz w nim obejrzeć aktualny grafik, a także złożyć wniosek o urlop lub dzień wolny.</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col col-lg-1 col-md-1">
-					</div>
-			    	<div class="col col-sm-8">
-				      <h2>Our Values</h2><br>
-				      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-				      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			    	</div>
-			  	</div>
 			</div>	
 			<br/>
 		</div>
@@ -67,8 +56,8 @@
 	
 	<div id="apply" class="container content">
 		<div class="row">
-	    <div class="col col-lg-1 col-md-1">
-		</div>
+	    	<div class="col col-lg-1 col-md-1">
+			</div>
 	    	<div class="col col-sm-8">
 	    		<form class="form-signin" method="post" action="appliDay">
 		      		<h2 class="form-signin-heading">Złóż wniosek o wolny dzień</h2><br>
@@ -92,8 +81,8 @@
 		      		<input class="btn btn-lg btn-primary" type="submit" value="Wyślij" />
 		      	</form>  
 		    </div>
-	  	</div>
-	</div>	
+ 			</div>
+		</div>	
 		
 			
 

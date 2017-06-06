@@ -1,9 +1,9 @@
 package pl.generatorgrafiku.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Schedule {
-	private Timestamp day;
+	private Date day;
 	private long userId;
 	private String userCompanyNip;
 	private WorkType shift;
@@ -11,17 +11,17 @@ public class Schedule {
 	public Schedule() { }
 	
 	public Schedule(Schedule schedule) {
-		this.day = new Timestamp(schedule.day.getTime());
+		this.day = new Date(schedule.day.getTime());
 		this.userId = schedule.userId;
 		this.userCompanyNip = schedule.userCompanyNip;
 		this.shift = schedule.shift;
 	}
 
-	public Timestamp getDay() {
+	public Date getDay() {
 		return day;
 	}
 
-	public void setDay(Timestamp day) {
+	public void setDay(Date day) {
 		this.day = day;
 	}
 

@@ -29,22 +29,28 @@
 						<h2>
 						Regulamin.
 						</h2>
-						<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet justo nec nisi vulputate laoreet a sed ipsum. 
-						Vestibulum sed nunc et orci elementum lacinia vel vitae nisl. Proin pulvinar convallis malesuada. Etiam sit amet ex aliquam, 
-						rutrum quam vitae, porttitor justo. Pellentesque nec mi sit amet libero auctor dignissim. Aliquam varius diam eu egestas 
-						pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed fermentum mauris 
-						in placerat pellentesque.
-						<br/><br/>
-						Aliquam tincidunt, sapien et facilisis aliquam, diam neque ultricies dui, non dignissim nibh erat at dolor. 
-						Vivamus finibus ullamcorper dui, non laoreet justo interdum vitae. Duis sit amet pulvinar dui, in feugiat libero. 
-						Phasellus porta fermentum diam at placerat. Integer non magna volutpat, molestie leo eget, ultricies nunc. Orci varius 
-						natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec vel ligula hendrerit, elementum massa eu,
-						molestie ipsum. Cras rutrum faucibus scelerisque. Sed dolor orci, fermentum id rhoncus a, dapibus vitae ex. Nam ultrices 
-						tempus tortor a ullamcorper. Nulla facilisi. Nunc sapien tortor, maximus ac ultrices vel, luctus vel lorem. Donec felis dolor, 
-						egestas quis pulvinar vitae, interdum a dui. Morbi hendrerit lorem ligula, a tincidunt ante rutrum a. Maecenas faucibus 
-						pellentesque lacus, et lobortis purus lacinia non. Ut quis leo malesuada, feugiat purus non, ultricies ex.
-						</p>
+						<ol id="reglist">
+						<li> Aplikacja powstała na potrzeby przedmiotu Projekt Aplikacji Webowej. </li>
+						<li> Celem aplikacji jest umożliwienie generowania grafików pracy dla określonych pracowników przy zadanych kryteriach, do których należą między innymi:</li>
+							<ul>
+							<li>zasady Kodeksu Pracy - m.in. pięciodniowy tydzień pracy</li>
+							<li>wnioski urlopowe składane przez pracowników (kierownik decyduje, które z nich uwzględnia)</li>
+							<li>życzenia związane z dniami wolnymi składane przez pracowników (kierownik decyduje, które z nich uwzględnia)</li>
+							<li>dni wolne wynikające z kalendarza - święta</li>
+							<li>określona liczba pracowników w ciągu jednej zmiany</li>
+							<li>sprawiedliwy przydział zmiany niedzielnej</li>
+							</ul>
+						<li>Kierownik rejestruje swoją firmę na stronie głównej Aplikacji, a następnie w Panelu Kierownika może dokonać rejestracji swoich pracowników.</li>
+						<li>Kierownik ma uprawnienia do przeglądania i uzupełniania listy pracowników, wybierania wniosków pracowników do uwzględnienia i generowania grafiku.</li>
+						<li>Pracownik może zgłaszać swoje wnioski i przeglądać wygenerowany grafik.</li>
+						<li>Zabrania się korzystania z Aplikacji w sposób niezgodny z jej przeznaczeniem.</li>
+						<li>Autorami Aplikacji są:</li>
+						<ul>
+						<li>Dawid Kupny </li>
+						<li>Mariusz Krzyżowski</li>
+						studenci specjalności Inżynieria Oprogramowania na studiach inżynierskich kierunku Informatyka.
+						</ul>
+						</ol>
 						<br/>
 						<p><a href="${pageContext.request.contextPath}">Powrót do strony głównej.</a></p>
 					</section>
